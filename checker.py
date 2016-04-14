@@ -45,7 +45,7 @@ while(True):
     for i in range(0, len(open_tags)):
         open_tag = open_tags[i]
         open = unicode(open_tag.string)
-        if int(open) == 0:
+        if int(open) > 0:
             #Corresponding section number
             section = id_tags[i].string.strip()
             if section in sections and section not in already_emailed:
