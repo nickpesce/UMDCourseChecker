@@ -4,7 +4,10 @@ import time
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
 
-#CURRENTLY CONFIGURED TO CHECK FOR BSCI189I SECTION 1009
+#check that correct num commands are given 
+if len(sys.argv) < 3: 
+    print "USAGE: " + sys.argv[0] + " course_code sections..." 
+    sys.exit(2)
 
 #Address to send email to
 receiver = <RECIEVER EMAIL>
@@ -13,9 +16,9 @@ sender = <SENDER EMAIL>
 #Password of the sender email
 password = <SENDER PASSWORD>
 #Course code to check for
-course = "BSCI189I"
+course = sys.argv[1]
 #Section numbers to check
-sections = ["1009"]
+sections = argv[2:]
 #List of sections that were already emailed about
 already_emailed = []
 #Current term code
