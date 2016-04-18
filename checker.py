@@ -16,7 +16,7 @@ password = !OMMITTED!
 #Course code to check for
 course = None
 #Section numbers to check
-sections = None
+sections = []
 #List of sections that were already emailed about
 already_emailed = []
 #Current term code
@@ -61,10 +61,10 @@ while(True):
     for i in range(0, len(open_tags)):
         open_tag = open_tags[i]
         open = unicode(open_tag.string)
+        section = id_tags[i].string.strip()
         if int(open) >  0:
             #Corresponding section number
-            section = id_tags[i].string.strip()
-            if (sections is None) or (section in sections) and (section not in already_emailed):
+            if ((len(sections) == 0) or (section in sections)) and (section not in already_emailed):
                 #Make message
                 body = "Link to add/drop:  https://ntst.umd.edu/testudo/main/dropAdd?venusTermId="+term+"&crslist=" + course + "/"+section + " . " + course + " section " + section + " has " + open + " spots open!\n"
                 for receiver in receivers:
