@@ -31,12 +31,10 @@ except:
     print "USAGE: " + sys.argv[0] + " (-e email)... course_code [sections...]" 
     sys.exit(2)
 
-#Must at least give course name
 if(len(args) < 1):
     print "USAGE: " + sys.argv[0] + " (-e email)... course_code [sections...]" 
     sys.exit(2)
 
-#Go through each argument
 for o, a in opts:
     if o == "-e":
         receivers.append(a)
@@ -85,11 +83,11 @@ while(True):
                     s.quit()
                 already_emailed.append(section);
                 print "Emailed " + " & ".join(receivers) + " becuase section " + section + " of " + course + " now has " + open + " spots."
-            else:
-                #If the section is full, it should be able to be emailed about again(If it was already emailed about)
-                try:
-                    already_emailed.remove(section)
-                except ValueError:
-                    pass
+        else:
+            #If the section is full, it should be able to be emailed about again(If it was already emailed about)
+            try:
+                already_emailed.remove(section)
+            except ValueError:
+                pass
     #Wait, then check again
     time.sleep(sleep_time);
